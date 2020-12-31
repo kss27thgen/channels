@@ -2,3 +2,66 @@
     margin: 0
     padding: 0
     box-sizing: border-box
+
+a
+    text-decoration: none
+    color: #555
+    &:hover
+        opacity: .8
+
+li
+    list-style: none
+
+.loaderPage
+    width: 100vw
+    height: 100vh
+    display: flex
+    justify-content: center
+    align-items: center
+
+.authPage
+    display: flex
+    flex-direction: column
+    justify-content: center
+    text-align: center
+    min-height: 100vh
+    color: #fff
+    background-color: $color-green
+    padding: 0 1.5rem
+    header
+        margin-bottom: 2rem
+        svg
+            color: $color-white
+            font-size: 3rem
+            margin-bottom: 2rem
+    form
+        max-width: 30rem
+        margin: 0 auto 2.5rem
+        .error
+            margin-bottom: 1rem
+        input
+            display: block
+            width: 100%
+            font-size: 1.5rem
+            border: none
+            outline: none
+            border-radius: 5rem
+            margin-bottom: 1rem
+            padding: 1rem 2rem
+            &.error
+                border: 1px solid $color-red
+                background-color: lighten($color-red, 55%)
+        .submitButton
+            +button($color-green-dark, $color-white)
+            margin-top: 1rem
+            font-size: 1.25rem
+    footer
+        font-size: 1.25rem
+        p
+            margin-bottom: 1.5rem
+        a
+            +button($color-green-dark, $color-white)
+            white-space: nowrap
+            margin-left: 1rem
+            svg
+                margin-left: .5rem

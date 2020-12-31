@@ -1,0 +1,282 @@
+// library responsive //
+
+// mobile first
+=w($val)
+  @if $responsive
+    @if unitless($val)
+      $val: $val + 'px'
+    @media (min-width: #{$val})
+      @content
+  @else if $PC
+    @content
+  @else
+    //
+=w400
+  @if $responsive
+    @media (min-width: 400px)
+      @content
+  @else if $PC
+    @content
+  @else
+    //
+=w500
+  @if $responsive
+    @media (min-width: 500px)
+      @content
+  @else if $PC
+    @content
+  @else
+    //
+=w600
+  @if $responsive
+    @media (min-width: 600px)
+      @content
+  @else if $PC
+    @content
+  @else
+    //
+=w700
+  @if $responsive
+    @media (min-width: 700px)
+      @content
+  @else if $PC
+    @content
+  @else
+    //
+=w800
+  @if $responsive
+    @media (min-width: 800px)
+      @content
+  @else if $PC
+    @content
+  @else
+    //
+=w900
+  @if $responsive
+    @media (min-width: 900px)
+      @content
+  @else if $PC
+    @content
+  @else
+    //
+=w1000
+  @if $responsive
+    @media (min-width: 1000px)
+      @content
+  @else if $PC
+    @content
+  @else
+    //
+=w1100
+  @if $responsive
+    @media (min-width: 1100px)
+      @content
+  @else if $PC
+    @content
+  @else
+    //
+=w1200
+  @if $responsive
+    @media (min-width: 1200px)
+      @content
+  @else if $PC
+    @content
+  @else
+    //
+=w1300
+  @if $responsive
+    @media (min-width: 1300px)
+      @content
+  @else if $PC
+    @content
+  @else
+    //
+=w1400
+  @if $responsive
+    @media (min-width: 1400px)
+      @content
+  @else if $PC
+    @content
+  @else
+    //
+=w1500
+  @if $responsive
+    @media (min-width: 1500px)
+      @content
+  @else if $PC
+    @content
+  @else
+    //
+=w1600
+  @if $responsive
+    @media (min-width: 1600px)
+      @content
+  @else if $PC
+    @content
+  @else
+    //
+=w1700
+  @if $responsive
+    @media (min-width: 1700px)
+      @content
+  @else if $PC
+    @content
+  @else
+    //
+=w1800
+  @if $responsive
+    @media (min-width: 1800px)
+      @content
+  @else if $PC
+    @content
+  @else
+    //
+=w1900
+  @if $responsive
+    @media (min-width: 1900px)
+      @content
+  @else if $PC
+    @content
+  @else
+    //
+
+// pc first
+=ww($val)
+  @if $responsive
+    $val: $val - 1
+    @if unitless($val)
+      $val: $val + 'px'
+    @media (max-width: #{$val})
+      @content
+  @else if $SP
+    @content
+  @else
+    //
+=ww400
+  @if $responsive
+    @media (max-width: (400px - 1))
+      @content
+  @else if $SP
+    @content
+  @else
+    //
+=ww500
+  @if $responsive
+    @media (max-width: (500px - 1))
+      @content
+  @else if $SP
+    @content
+  @else
+    //
+=ww600
+  @if $responsive
+    @media (max-width: (600px - 1))
+      @content
+  @else if $SP
+    @content
+  @else
+    //
+=ww700
+  @if $responsive
+    @media (max-width: (700px - 1))
+      @content
+  @else if $SP
+    @content
+  @else
+    //
+=ww800
+  @if $responsive
+    @media (max-width: (800px - 1))
+      @content
+  @else if $SP
+    @content
+  @else
+    //
+=ww900
+  @if $responsive
+    @media (max-width: (900px - 1))
+      @content
+  @else if $SP
+    @content
+  @else
+    //
+=ww1000
+  @if $responsive
+    @media (max-width: (1000px - 1))
+      @content
+  @else if $SP
+    @content
+  @else
+    //
+=ww1100
+  @if $responsive
+    @media (max-width: (1100px - 1))
+      @content
+  @else if $SP
+    @content
+  @else
+    //
+=ww1200
+  @if $responsive
+    @media (max-width: (1200px - 1))
+      @content
+  @else if $SP
+    @content
+  @else
+    //
+=ww1300
+  @if $responsive
+    @media (max-width: (1300px - 1))
+      @content
+  @else if $SP
+    @content
+  @else
+    //
+=ww1400
+  @if $responsive
+    @media (max-width: (1400px - 1))
+      @content
+  @else if $SP
+    @content
+  @else
+    //
+=ww1500
+  @if $responsive
+    @media (max-width: (1500px - 1))
+      @content
+  @else if $SP
+    @content
+  @else
+    //
+=ww1600
+  @if $responsive
+    @media (max-width: (1600px - 1))
+      @content
+  @else if $SP
+    @content
+  @else
+    //
+=ww1700
+  @if $responsive
+    @media (max-width: (1700px - 1))
+      @content
+  @else if $SP
+    @content
+  @else
+    //
+=ww1800
+  @if $responsive
+    @media (max-width: (1800px - 1))
+      @content
+  @else if $SP
+    @content
+  @else
+    //
+=ww1900
+  @if $responsive
+    @media (max-width: (1900px - 1))
+      @content
+  @else if $SP
+    @content
+  @else
+    //
