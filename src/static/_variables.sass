@@ -1,0 +1,18 @@
+$color-red: #af1222
+$color-white: #f6f3d4
+$color-green-light: #bbc76e
+$color-green: #6a864d
+$color-green-dark: #476242
+
+=boxshadow($color)
+    box-shadow: 1px 2px 4px $color
+
+=button($color, $bgColor)
+    +boxshadow($color)
+    min-width: 10rem
+    background-color: $bgColor
+    color: $color
+    outline: none
+    border-radius: 5rem
+    cursor: pointer
+    padding: .75rem 2rem

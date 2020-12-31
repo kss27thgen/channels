@@ -1,5 +1,4 @@
 import React from 'react'
-import '../static/base.sass'
 
 function App() {
     return (
