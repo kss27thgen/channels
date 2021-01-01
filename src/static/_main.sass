@@ -26,13 +26,13 @@ li
     text-align: center
     min-height: 100vh
     color: #fff
-    background-color: $color-green
+    background-color: $color-green-dark
     padding: 0 1.5rem
     header
         margin-bottom: 2rem
         svg
             color: $color-white
-            font-size: 3rem
+            font-size: 4rem
             margin-bottom: 2rem
     form
         max-width: 30rem
@@ -56,12 +56,37 @@ li
             margin-top: 1rem
             font-size: 1.25rem
     footer
-        font-size: 1.25rem
         p
+            font-size: 1rem
             margin-bottom: 1.5rem
         a
             +button($color-green-dark, $color-white)
             white-space: nowrap
+            font-size: 1.25rem
             margin-left: 1rem
             svg
                 margin-left: .5rem
+
+.appPage
+    display: flex
+    flex-wrap: wrap
+    width: 100vw
+    +w800
+        flex-wrap: nowrap
+    .colorPanel
+        flex: 0 1 5rem
+        background-color: #eee
+    .sidePanel
+        flex: 0 1 100vw
+        background-color: $color-green-dark
+        min-height: 30vh
+        padding-bottom: 2.5rem
+        +w800
+            flex: 0 1 30%
+            min-height: 100vh
+    .messages
+        flex: 0 1 100%
+        background-color: #eee
+        color: #333
+        +w800
+            flex: 0 1 70%

@@ -149,17 +149,17 @@ class Register extends Component {
                             className="submitButton"
                             type="submit" 
                             disabled={loading}>
-                            {loading ? 'Loading...' : 'Submit'}      
+                            {loading ? '登録中...' : '新規登録'}      
                         </button> 
                     </form>
 
     
                     <footer>
                         <p>
-                            Already have an account?
+                            アカウントをお持ちの場合
                         </p>
                         <Link to="/login">
-                            Login
+                            ログイン
                             <FontAwesomeIcon icon={faArrowRight} />
                         </Link>
                     </footer>
