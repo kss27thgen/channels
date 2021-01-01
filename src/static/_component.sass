@@ -27,7 +27,7 @@
             color: $color-white
 
 .userPanel
-    margin-bottom: 2rem
+    margin-bottom: 1rem
     .dropdown
         h3
             display: flex
@@ -58,7 +58,7 @@
         margin-bottom: 1rem
         svg
             cursor: pointer
-            font-size: 2rem
+            font-size: 2.25rem
             user-select: none
     .bottom
         b
@@ -75,6 +75,10 @@
     top: 1rem
     right: 1rem
     user-select: none
+    z-index: 2
+    +w800
+        top: .5rem
+        right: .5rem
     svg
         font-size: 2.25rem
         color: $color-white
@@ -91,14 +95,17 @@
         left: 0
         right: 0
         background-color: rgba(#333, .8)
+        z-index: 3
     .modal
         box-shadow: 0 4px 4px #222
         transition: .4s
         z-index: 5
         position: absolute
         top: -100vh
-        left: 10vw
-        width: 80vw
+        left: 50%
+        transform: translateX(-50%)
+        width: 90vw
+        max-width: 50rem
         min-height: 60vh
         background-color: #fff
         border-radius: 8px
@@ -106,7 +113,7 @@
         flex-direction: column
         justify-content: center
         align-items: center
-        padding: 1rem 2rem
+        padding: 1rem
     &.show
         .overlay
             display: block
@@ -123,17 +130,17 @@
         font-size: 1.5rem
         width: 100%
         border-radius: 5rem
-        border: 1px solid $color-green
+        border: 1px solid #888
         outline: none
-        padding: .5rem 2rem
+        padding: .5rem 1rem
         margin-bottom: .5rem
     textarea
         font-size: 1.5rem
         width: 100%
         border-radius: 8px
-        border: 1px solid $color-green
+        border: 1px solid #888
         outline: none
-        padding: .5rem 2rem
+        padding: .5rem 1rem
     .buttons
         display: flex
         justify-content: center
@@ -146,3 +153,58 @@
                 +button(#fff, $color-green-dark)
             &:nth-of-type(2)
                 +button(#fff, #888)
+
+.messages
+    display: flex
+    flex-direction: column
+    padding: 1rem
+    position: relative
+
+.messagesHeader
+    +boxshadow(#aaa)
+    padding: .5rem 2rem .5rem .5rem
+    border-radius: 4px
+    background-color: #fff
+    .info
+        display: flex
+        align-items: center
+        margin-bottom: .5rem
+        h2
+            margin-left: .25rem
+        em
+            margin-left: auto
+    .input
+        display: flex
+        input
+            margin-left: auto
+            font-size: 1.25rem
+            border-radius: 5rem
+            outline: none
+            border: 1px solid #aaa
+            padding: .25rem 1rem
+
+.messageForm
+    +boxshadow(#aaa)
+    background-color: #fff
+    margin-top: auto
+    padding: .5rem
+    input
+        width: 100%
+        font-size: 1.5rem
+        padding: .5rem 1rem
+        outline: none
+        border: 1px solid #aaa
+        border-radius: 5rem
+        margin-bottom: .5rem
+    .buttons
+        display: flex
+        justify-content: center
+        button
+            flex: 0 1 50%
+            margin: 0 .5rem
+            &:nth-of-type(1)
+                +button($color-white, $color-green)
+            &:nth-of-type(2)
+                +button($color-white, $color-red)
+            svg
+                margin-right: .5rem
