@@ -63,6 +63,7 @@ class Channels extends Component {
     changeChannel = channel => {
         this.setActiveChannel(channel)
         this.props.setCurrentChannel(channel)
+        
     }
 
     setActiveChannel = channel => {
@@ -96,3 +97,4 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps, {openModal, setCurrentChannel })(Channels);
+

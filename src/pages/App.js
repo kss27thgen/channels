@@ -21,7 +21,7 @@ class App extends Component {
                     <FontAwesomeIcon icon={faInfoCircle} />
                 </div>
                 <SidePanel currentUser={this.props.currentUser} />
-                <Messages />
+                <Messages currentChannel={this.props.currentChannel} />
                 <Modal />
             </div>
         )

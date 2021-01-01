@@ -31,7 +31,7 @@ export const closeModal = () => {
 
 export const setCurrentChannel = channel => {
     return {
-        type: actionTypes.SET_CURRENT_CHSNNEL,
+        type: actionTypes.SET_CURRENT_CHANNEL,
         payload: {
             currentChannel: channel
         }
