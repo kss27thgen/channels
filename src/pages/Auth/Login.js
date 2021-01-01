@@ -34,7 +34,11 @@ class Login extends Component {
         event.preventDefault();
 
         if (!this.isFormValid(this.state)) {
-            return;
+            let errors = [];
+            let error;
+            error = { message: 'Fill in all fields' }
+            this.setState({ errors: errors.concat(error) })
+            return false;
         }
 
         this.setState({errors: [], loading: true})
@@ -89,16 +93,16 @@ class Login extends Component {
                             className="submitButton"
                             type="submit" 
                             disabled={loading}>
-                            {loading ? 'Loading...' : 'Submit'}      
+                            {loading ? 'ログイン中...' : 'ログイン'}      
                         </button> 
                     </form>
 
                     <footer>
                         <p>
-                            Don't have an account?
+                            アカウントをお持ちでない場合
                         </p>
                         <Link to="/register">
-                            Register
+                            新規登録
                             <FontAwesomeIcon icon={faArrowRight} />
                         </Link>
                     </footer>
