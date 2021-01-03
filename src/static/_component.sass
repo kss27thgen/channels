@@ -23,7 +23,7 @@
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
         svg
             margin-right: .5rem
-            font-size: 1.75rem
+            font-size: 2.5rem
             color: $color-white
 
 .userPanel
@@ -70,37 +70,23 @@
             &.active
                 opacity: 1
 
-.infoModal
-    position: absolute
-    top: 1rem
-    right: 1rem
-    user-select: none
-    z-index: 2
-    +w800
-        top: .5rem
-        right: .5rem
-    svg
-        font-size: 2.25rem
-        color: $color-white
-        cursor: pointer
-        +w800
-            color: $color-green
-
 .modalWrap
     .overlay
         display: none
         position: absolute
         top: 0
-        bottom: 0
+        bottom: -40vh
         left: 0
         right: 0
         background-color: rgba(#333, .8)
         z-index: 3
+        +w800
+            bottom: 0
     .modal
         box-shadow: 0 4px 4px #222
         transition: .4s
         z-index: 5
-        position: absolute
+        position: fixed
         top: -100vh
         left: 50%
         transform: translateX(-50%)
@@ -158,19 +144,32 @@
     display: flex
     flex-direction: column
     padding: 1rem
-    position: relative
 
 .messagesHeader
     +boxshadow(#aaa)
     padding: .5rem 2rem .5rem .5rem
     border-radius: 4px
     background-color: #fff
+    position: relative
+    .infoModal
+        position: absolute
+        top: -.5rem
+        right: -.5rem
+        user-select: none
+        z-index: 2
+        svg
+            font-size: 2.25rem
+            color: $color-green
+            cursor: pointer
     .info
         display: flex
         align-items: center
         margin-bottom: .5rem
+        svg
+            font-size: 1.5rem
         h2
             margin-left: .25rem
+            font-size: 1.8rem
         em
             margin-left: auto
     .input
@@ -195,16 +194,53 @@
         outline: none
         border: 1px solid #aaa
         border-radius: 5rem
-        margin-bottom: .5rem
+        margin-bottom: .25rem
     .buttons
         display: flex
+        flex-wrap: wrap
         justify-content: center
         button
-            flex: 0 1 50%
-            margin: 0 .5rem
+            flex: 0 1 40%
+            margin: .25rem .5rem
             &:nth-of-type(1)
                 +button($color-white, $color-green)
             &:nth-of-type(2)
                 +button($color-white, $color-red)
             svg
                 margin-right: .5rem
+
+.message-list
+    +boxshadow(#aaa)
+    height: 65vh
+    margin: 1rem 0
+    border-radius: 4px
+    padding: 1rem 0
+    overflow-y: auto
+    background-color: #fff
+
+.message
+    display: flex
+    margin-bottom: .5rem
+    padding: 0 .5rem .5rem
+    border-bottom: 1px solid #ddd
+    min-height: 5.5rem
+    .avatar
+        margin-right: .5rem
+        img
+            width: 4rem
+            border: 2px solid #eee
+            border-radius: 50%
+    .right
+        width: 100%
+        .upper
+            display: flex
+            flex-wrap: wrap
+            align-items: center
+            padding-right: .5rem
+        .name
+            color: #555
+            font-weight: bold
+            font-size: 1.25rem
+            margin-bottom: .25rem
+        .time
+            margin-left: auto

@@ -10,16 +10,9 @@ import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import { openModal } from '../actions'
 class App extends Component {
 
-    openChannelInfoModal = () => {
-        this.props.openModal('channel info');
-    }
-
     render() {
         return (
             <div className="appPage">
-                <div className="infoModal" onClick={this.openChannelInfoModal}>
-                    <FontAwesomeIcon icon={faInfoCircle} />
-                </div>
                 <SidePanel currentUser={this.props.currentUser} />
                 <Messages currentChannel={this.props.currentChannel} />
                 <Modal />
