@@ -1,73 +1,67 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import MessageForm from './MessageForm';
 import MessagesHeader from './MessagesHeader';
 import firebase from '../firebase'
 import { connect } from 'react-redux';
 import Message from './Message';
 
-class Messages extends Component {
-    state = {
-        messagesRef: firebase.firestore().collection('messages'),
-        chnannelsRef: firebase.firestore().collection('channels'),
-        channel: this.props.currentChannel,
-        user: this.props.currentUser,
-        messages: [],
-        messagesLoading: true
+const Messages = ({ currentUser, currentChannel = {} }) => {
+    const [messages, setMessages] = useState([])
+
+    useEffect(() => {
+        addListeners(currentChannel.id)
+
+        return () => unsubscribe();
+    }, [currentChannel])
+
+    const addListeners = (channelId) => {
+        addMessageListener(channelId)
     }
 
-    componentDidMount() {
-        const { channel, user } = this.state;
+    let unsubscribe = function(){};
 
-        if (channel && user) {
-            this.addListeners(channel.id)
-        }
-    }
+    const addMessageListener = (channelId) => {
+		let loadedMessages = [];
+        unsubscribe = firebase.firestore().collection('messages')
+            .orderBy("timestamp", "asc")
+			.onSnapshot((snapshot) => {
+				snapshot.docChanges().forEach((change) => {
+					if (change.type === "added") {
+						loadedMessages.unshift(change.doc.data());
+					}
+				});
+				filterMessages(channelId, loadedMessages);
+			});
+	};
 
-    addListeners = channelId => {
-        this.addMessageListener(channelId)
-    }
+    const filterMessages = (channelId, loadedMessages) => {
+		setMessages(
+			loadedMessages.filter(
+				(message) => message.channelId === channelId,
+            )
+        );
+	};
 
-    addMessageListener = channelId => {
-        console.log(channelId)
-        let loadtedMessages = [];
-        const unsubscribe = this.state.chnannelsRef.doc(channelId).collection('messages').onSnapshot(snapShot => {
-            snapShot.docChanges().forEach((change) => {
-                if (change.type === "added") {
-                    loadtedMessages.push(change.doc.data())
-                }
-                this.setState({
-                    messages: loadtedMessages,
-                    messagesLoading: false
-                })
-            })
-        })
-    }
-
-
-    displayMessages = messages => {
-        return messages.length > 0 && messages.map(message => (
+    const displayMessages = messages => {
+        return messages.length > 0 && messages.map((message, i) => (
             <Message 
-                key={message.timestamp} 
+                key={i} 
                 message={message}
-                user={this.state.user} />
+                user={currentUser} />
         ))
     }
 
-    render() {
-        const { messagesRef, messages } = this.state;
+    return (
+        <div className="messages">
+            <MessagesHeader />
 
-        return (
-            <div className="messages">
-                <MessagesHeader />
-
-                {this.displayMessages(messages)}
-
-                <MessageForm
-                    messagesRef={messagesRef}
-                />
+            <div className="message-list">
+                {displayMessages(messages)}
             </div>
-        );
-    }
+
+            <MessageForm />
+        </div>
+    );
 }
 
 const mapStateToProps = state => ({

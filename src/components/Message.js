@@ -18,8 +18,13 @@ class Message extends Component {
                     <img src={message.user.avatar} alt="avatar" />
                 </div>
                 <div className="right">
-                    <div className="name">{message.user.name}</div>
-                    <div className="time">{this.timeFromNow(message.timestamp)}</div>
+                    <div className="upper">
+                        <div className="name">{message.user.name}</div>
+                        <div className="time">{this.timeFromNow(message.timestamp.toDate())}</div>
+                    </div>
+                    <div>
+                        {message.content}
+                    </div>
                 </div>
             </div>
         );
