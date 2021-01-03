@@ -46,7 +46,7 @@ const modal_reducer = (state = initialStateModal, action) => {
 }
 
 const initialChannleState = {
-    currentChannel: null
+    currentChannel: {}
 }
 
 const channel_reducer = (state = initialChannleState, action) => {

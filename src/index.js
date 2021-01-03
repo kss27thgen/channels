@@ -20,7 +20,7 @@ class Root extends Component {
         firebase.auth().onAuthStateChanged(user => {
             if (user) {
                 this.props.setUser(user)
-                this.props.history.push('/');
+                this.props.history.push('/app');
             } else {
                 this.props.clearUser();
                 this.props.history.push('/login')
@@ -31,7 +31,7 @@ class Root extends Component {
     render() {
         return this.props.isLoading ? <Loader /> : (
             <Switch>
-                <Route exact path="/" component={App} />
+                <Route exact path="/app" component={App} />
                 <Route path="/register" component={Register} />
                 <Route path="/login" component={Login} />
             </Switch>

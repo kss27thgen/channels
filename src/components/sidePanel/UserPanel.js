@@ -6,7 +6,8 @@ import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
 class UserPanel extends Component {
     state = {
         dropdownOpen: false,
-        user: this.props.currentUser
+        user: this.props.currentUser,
+        user2: firebase.auth().currentUser
     }
 
 
@@ -24,11 +25,12 @@ class UserPanel extends Component {
     }
 
     render() {
+        const { photoURL, displayName } = this.state.user2;
         return (
             <section className="userPanel">
                 <div className="dropdown">
                     <h3 onClick={this.toggleDropdown}>
-                        <img src={this.state.user.photoURL} alt="avatar"/>
+                        <img src={photoURL} alt="avatar"/>
                         {this.state.user.displayName}
                         {this.state.dropdownOpen ? <FontAwesomeIcon icon={faChevronUp} /> : <FontAwesomeIcon icon={faChevronDown} />}
                     </h3>

@@ -9,7 +9,7 @@ class MessageForm extends Component {
     state = {
         message: '',
         loading: false,
-        channelsRef: firebase.firestore().collection('channels'),
+        messagesRef: firebase.firestore().collection('messages'),
         errors: []
     }
     
@@ -24,7 +24,8 @@ class MessageForm extends Component {
         const { uid, displayName, photoURL } = this.props.currentUser
         const message = {
             content: this.state.message,
-            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+            timestamp: new Date(),
+            channelId: this.props.currentChannel.id,
             user: {
                 id: uid,
                 name: displayName,
@@ -36,12 +37,11 @@ class MessageForm extends Component {
 
     sendMessage = event => {
         event.preventDefault();
-        const { messagesRef } = this.props;
-        const { message, channelsRef } = this.state;
+        const { message, messagesRef } = this.state;
 
         if (message) {
             this.setState({ loading: true })
-            channelsRef.doc(this.props.currentChannel.id).collection('messages').add(this.createMessage())
+            messagesRef.add(this.createMessage())
             .then(() => {
                 this.setState({loading: false, message: '', errors: []})
             })
